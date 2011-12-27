@@ -1,16 +1,16 @@
+import logging
+
 def sort(seq):
     """Insertion sort algorithm implementation"""
-    print(seq)
+    logging.info("Sorting {0}".format(seq))
     for i in range(1, len(seq)):
-        el = seq[i]
-        i_pos = i
-        for j in range(i - 1, -1, -1):
-            print("j =", j)
-            if el < seq[j]:
-                print("{0} < {1}. swap".format(el, seq[j]))
-                del seq[i_pos]
-                seq.insert(j, el)
-                i_pos = j
-            else:
-                print("{0} > {1}".format(seq[i], seq[j]))
-            print(seq)
+        j = i - 1
+        new_i = i
+        while j >= 0 and seq[i] < seq[j]:
+            new_i = j
+            j = j - 1
+        el_i = seq[i]
+        del seq[i]
+        seq.insert(new_i, el_i)
+    logging.info("Sorted. Result: {0}".format(seq))
+    return seq
