@@ -8,3 +8,4 @@ def sort(seq):
             if seq[i] < seq[i - 1]:
                 seq[i], seq[i - 1] = seq[i - 1], seq[i]
                 swap_used = True
+    return seq
