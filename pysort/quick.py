@@ -1,6 +1,8 @@
+from random import randint
 
 def partition(a, frm, to):
-    pivot = to
+    pivot = randint(frm, to)
+    new_pivot = pivot
     last_small = frm - 1
     last_big = frm
     for i in range(frm, to + 1):
@@ -9,7 +11,9 @@ def partition(a, frm, to):
         else:
             last_small += 1
             a[last_small], a[i] = a[i], a[last_small]
-    return last_small # new pivot position
+            if i == pivot:
+                new_pivot = last_small
+    return new_pivot # new pivot position
 
 def sort(a, frm = 0, to = None):
     if to == None:
