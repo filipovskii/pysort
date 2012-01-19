@@ -13,7 +13,10 @@ def partition(a, frm, to):
             a[last_small], a[i] = a[i], a[last_small]
             if i == pivot:
                 new_pivot = last_small
-    return new_pivot # new pivot position
+    a[new_pivot], a[last_small] = a[last_small], a[new_pivot]
+    print("a paritioned: {0}, pivot: a[{1}] = {2}"
+            .format(a[frm: to + 1], last_small, a[last_small]))
+    return last_small # new pivot position
 
 def sort(a, frm = 0, to = None):
     if to == None:
